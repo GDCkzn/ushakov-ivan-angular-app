@@ -14,12 +14,15 @@ import {Hero} from "../hero";
         <td>{{hero1.id}}</td>
         <td>{{hero1.name}}</td>
     </table>
+
   `,
-  styles: []
+  styles: [`
+  `]
 })
 export class HeroTableComponent implements OnInit {
 
   @Input() heroes: Hero[] = [];
+
 
   constructor() {
   }

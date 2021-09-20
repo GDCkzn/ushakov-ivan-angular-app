@@ -8,6 +8,8 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroAddComponent } from './hero-add/hero-add.component';
 import { HeroTableComponent } from './hero-table/hero-table.component';
 import { HeroListComponent } from './hero-list/hero-list.component';
+import { HeroListItemComponent } from './hero-list-item/hero-list-item.component';
+import { HeroEditComponent } from './hero-edit/hero-edit.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,10 @@ import { HeroListComponent } from './hero-list/hero-list.component';
     HeroDetailComponent,
     HeroAddComponent,
     HeroTableComponent,
-    HeroListComponent
+    HeroListComponent,
+    HeroListItemComponent,
+    HeroEditComponent,
+
   ],
   imports: [
     BrowserModule,

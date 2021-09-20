@@ -13,6 +13,7 @@ import {Hero} from "../hero";
 export class HeroAddComponent implements OnInit {
   heroName?: string
   @Output() addHero: EventEmitter<Hero> = new EventEmitter<Hero>()
+  heroId: number = 21
 
   constructor() {
   }
@@ -22,7 +23,7 @@ export class HeroAddComponent implements OnInit {
 
   onClick() {
     const newHero: Hero = {
-      id: 22,
+      id: this.heroId,
       name: this.heroName!
     }
     this.addHero.emit(newHero)
