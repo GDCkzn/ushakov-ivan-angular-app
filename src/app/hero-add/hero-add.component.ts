@@ -1,5 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Hero} from "../hero";
+import {HeroesServices} from "../services/heroes.services";
 
 @Component({
   selector: 'app-hero-add',
@@ -12,10 +13,9 @@ import {Hero} from "../hero";
 })
 export class HeroAddComponent implements OnInit {
   heroName?: string
-  @Output() addHero: EventEmitter<Hero> = new EventEmitter<Hero>()
   heroId: number = 21
 
-  constructor() {
+  constructor(private heroesService : HeroesServices, private cd: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
@@ -26,7 +26,7 @@ export class HeroAddComponent implements OnInit {
       id: this.heroId,
       name: this.heroName!
     }
-    this.addHero.emit(newHero)
-
+    this.heroesService.addHero(newHero)
+    this.cd.detectChanges()
   }
 }

@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Hero} from "../hero";
+import {EMPTY, Observable} from "rxjs";
 
 
 @Component({
@@ -9,13 +10,9 @@ import {Hero} from "../hero";
       *ngFor="let hero of heroes"
       [hero]="hero"
       [class.selected]="hero === selectedHero"
-      (deletedHero)="onDeletedHero($event)"
+
       (click)="onSelect(hero)"
-      (editedHero)="onEditedHero($event)">
-
-
-
-
+    >
     </app-hero-list-item>
   `,
   styles: [`
@@ -27,29 +24,24 @@ import {Hero} from "../hero";
   `]
 })
 export class HeroListComponent implements OnInit {
-  @Output() deletedHero: EventEmitter<Hero> = new EventEmitter<Hero>()
-  @Input() heroes: Hero[] = []
+  @Input() heroes$: Observable<Hero[]> = EMPTY
   selectedHero?: Hero;
-  @Output() editedHero: EventEmitter<Hero> = new EventEmitter<Hero>()
+  heroes?: Hero[] = []
 
 
   constructor() {
   }
 
   ngOnInit(): void {
+    this.heroes$.subscribe(x => {
+      this.heroes = x
+    })
   }
 
   onSelect(hero: Hero) {
     this.selectedHero = hero
   }
 
-  onDeletedHero(hero: Hero) {
-    this.deletedHero.emit(hero)
-  }
-
-  onEditedHero(hero: Hero){
-    this.editedHero.emit(hero)
-  }
 
 
 }

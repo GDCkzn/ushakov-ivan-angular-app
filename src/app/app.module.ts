@@ -10,6 +10,8 @@ import { HeroTableComponent } from './hero-table/hero-table.component';
 import { HeroListComponent } from './hero-list/hero-list.component';
 import { HeroListItemComponent } from './hero-list-item/hero-list-item.component';
 import { HeroEditComponent } from './hero-edit/hero-edit.component';
+import {ToastrModule} from "ngx-toastr";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -25,7 +27,10 @@ import { HeroEditComponent } from './hero-edit/hero-edit.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ToastrModule.forRoot(),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

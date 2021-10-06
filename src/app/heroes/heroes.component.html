@@ -3,11 +3,11 @@
 <!--<app-hero-detail [hero]="selectedHero"></app-hero-detail>-->
 
 
-<app-hero-add (addHero)="onAddHero($event)"></app-hero-add>
+<app-hero-add></app-hero-add>
 
-<app-hero-list [heroes]="heroes" (deletedHero)="onDeletedHero($event)" (editedHero)="onEditedHero($event)"></app-hero-list>
+<app-hero-list [heroes$]="heroes" ></app-hero-list>
 
-<app-hero-table [heroes]="heroes"></app-hero-table>
+<!--<app-hero-table [heroes]="heroes"></app-hero-table>-->
 
 <app-hero-edit [hero]="selectedHero"></app-hero-edit>
 

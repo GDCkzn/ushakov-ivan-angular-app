@@ -1,5 +1,6 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {Hero} from "../hero";
+import {HeroesServices} from "../services/heroes.services";
 
 @Component({
   selector: 'app-hero-list-item',
@@ -40,19 +41,20 @@ import {Hero} from "../hero";
 export class HeroListItemComponent implements OnInit {
 
   @Input() hero?: Hero
-  @Output() deletedHero: EventEmitter<Hero> = new EventEmitter<Hero>()
-  @Output() editedHero: EventEmitter<Hero> = new EventEmitter<Hero>()
 
-  constructor() { }
+  constructor(private heroesService : HeroesServices, private cd: ChangeDetectorRef) {
+
+  }
 
   ngOnInit(): void {
   }
 
   delete(hero: Hero) {
-    this.deletedHero.emit(hero)
+    this.heroesService.deleteHero(hero)
+    this.cd.detectChanges()
   }
 
   edit(hero: Hero) {
-    this.editedHero.emit(hero)
+    this.heroesService.editHero(hero)
   }
 }

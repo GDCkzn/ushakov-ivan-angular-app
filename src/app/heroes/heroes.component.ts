@@ -1,6 +1,8 @@
 ﻿import {Component, OnInit} from '@angular/core';
 import {Hero} from '../hero';
-import {ExampleService} from "../services/example.services";
+import {HeroesServices} from "../services/heroes.services";
+import {Observable} from "rxjs";
+
 
 
 @Component({
@@ -11,28 +13,19 @@ import {ExampleService} from "../services/example.services";
 
 export class HeroesComponent implements OnInit {
 
-  heroes = this.exampleService.heroes;
+  heroes: Observable<Hero[]>= this.heroesService.heroes$;
   selectedHero?: Hero;
   hero: Hero[] = []
 
-  constructor(private exampleService : ExampleService) {
+  constructor(private heroesService : HeroesServices) {
   }
 
   ngOnInit() {
-    this.exampleService.text = "12333"
+
   }
 
-  onAddHero(hero: Hero) {
-    this.heroes.push(hero)
-  }
 
-  onDeletedHero(hero: Hero) {
-    this.heroes = this.heroes.filter(x => x !== hero)
-  }
 
-  onEditedHero(hero: Hero){
-    this.selectedHero = hero
-  }
 
 
 
