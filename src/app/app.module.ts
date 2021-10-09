@@ -12,6 +12,10 @@ import { HeroListItemComponent } from './hero-list-item/hero-list-item.component
 import { HeroEditComponent } from './hero-edit/hero-edit.component';
 import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {StoreModule} from "@ngrx/store";
+import {heroesReducer, reducer} from "./store/heroes.reducer";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -30,7 +34,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     BrowserAnimationsModule,
     FormsModule,
     ToastrModule.forRoot(),
-
+    StoreModule.forRoot({app: reducer}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

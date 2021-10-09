@@ -1,1 +1,17 @@
-@import '~ngx-toastr/toastr';/* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr'; /* You can add global styles to this file, and also import other style files */
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+.flex-center{
+  display: flex;
+  justify-content: center;
+}
+.display-block{
+  display: block;
+  width: 200px;
+}
+.display-flex{
+  display: flex;
+}
+

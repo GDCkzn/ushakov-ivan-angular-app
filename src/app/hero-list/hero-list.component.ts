@@ -24,18 +24,14 @@ import {EMPTY, Observable} from "rxjs";
   `]
 })
 export class HeroListComponent implements OnInit {
-  @Input() heroes$: Observable<Hero[]> = EMPTY
+  @Input() heroes?: Hero[] = []
   selectedHero?: Hero;
-  heroes?: Hero[] = []
 
 
   constructor() {
   }
 
   ngOnInit(): void {
-    this.heroes$.subscribe(x => {
-      this.heroes = x
-    })
   }
 
   onSelect(hero: Hero) {
