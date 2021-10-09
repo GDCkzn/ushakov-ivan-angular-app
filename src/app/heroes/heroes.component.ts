@@ -13,7 +13,7 @@ import {Observable} from "rxjs";
 
 export class HeroesComponent implements OnInit {
 
-  heroes: Observable<Hero[]>= this.heroesService.heroes$;
+  heroes: Observable<Hero[]> = this.heroesService.heroes$;
   selectedHero?: Hero;
   hero: Hero[] = []
 

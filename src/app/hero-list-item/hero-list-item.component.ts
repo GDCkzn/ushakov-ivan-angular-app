@@ -56,5 +56,6 @@ export class HeroListItemComponent implements OnInit {
 
   edit(hero: Hero) {
     this.heroesService.editHero(hero)
+    this.cd.detectChanges()
   }
 }

@@ -9,16 +9,16 @@ export class HeroesServices {
 
 
   public heroes$ = new BehaviorSubject<Hero[]>([
-    {id: 11, name: 'Dr Nice'},
-    {id: 12, name: 'Narco'},
-    {id: 13, name: 'Bombasto'},
-    {id: 14, name: 'Celeritas'},
-    {id: 15, name: 'Magneta'},
-    {id: 16, name: 'RubberMan'},
-    {id: 17, name: 'Dynama'},
-    {id: 18, name: 'Dr IQ'},
-    {id: 19, name: 'Magma'},
-    {id: 20, name: 'Tornado'}
+    {id: 11, name: 'Dr Nice', ability: 'mega mind', side: 'dire', type: 'melee'},
+    {id: 12, name: 'Narco', ability: 'mind control', side: 'radiant', type: 'range'},
+    {id: 13, name: 'Bombasto', ability: 'regeneration', side: 'radiant', type: 'melee'},
+    {id: 14, name: 'Celeritas', ability: 'strength', side: 'dire', type: 'melee'},
+    {id: 15, name: 'Magneta', ability: 'time travel', side: 'radiant', type: 'range'},
+    {id: 16, name: 'RubberMan', ability: 'fly', side: 'dire', type: 'range'},
+    {id: 17, name: 'Dynama', ability: 'iron suit', side: 'radiant', type: 'melee'},
+    {id: 18, name: 'Dr IQ', ability: 'web', side: 'radiant', type: 'range and melee'},
+    {id: 19, name: 'Magma', ability: 'spirit form', side: 'dire', type: 'melee'},
+    {id: 20, name: 'Tornado', ability: 'wheelchair', side: 'radiant', type: 'nope'}
   ])
 
 
@@ -27,14 +27,9 @@ export class HeroesServices {
       console.log(x)
       if (x.length === 0)
         this.toastr.error("героев в массиве 0")
-
-      // this.toastr.success(x.length.toString())
     })
   }
 
-  // get heroes(): Hero[] {
-  //   return this._heroes
-  // }
 
   addHero(hero: Hero) {
     const heroes = this.heroes$.value
@@ -52,13 +47,10 @@ export class HeroesServices {
 
 
   deleteHero(hero: Hero) {
-    // this.heroes = [...this.heroes.filter(x => x !== hero)]
     const arr = this.heroes$.value
     const result = arr.filter(x => x !== hero)
     this.heroes$.next(result)
-    this.toastr.error('удален герой с именем', hero.name + ' ' + hero.id)
-
-
+    this.toastr.error('удален герой с именем ' + hero.name, hero.name + ' ' + hero.id)
 
 
   }
